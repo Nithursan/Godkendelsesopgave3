@@ -1,0 +1,3 @@
+class PaymentUser {
+    constructor
+}
