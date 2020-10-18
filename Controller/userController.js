@@ -15,17 +15,8 @@ function addNewUser(req, res) {
     res.sendStatus(200);
 }
 
-//slette en bruger
-function deleteUser(req, res) {
-    const firstname = req.params.id
-    console.log(firstname)
-    service.removeByAttr(users, 'firstname', `${firstname}`)
-    res.sendStatus(200);
-}
-
 //eksporter nu funktionerne
 module.exports = {
     userController,
     addNewUser,
-    deleteUser
 }

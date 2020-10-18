@@ -2,14 +2,23 @@
 const express = require("express");
 
 //initialiserer express-server
-const app = express();
-const PORT = process.env.PORT || 3000
+const server = express();
+const PORT = 3000
 
-//henter controller fra sti
-let userController = require('./Controller/userController')
+//henter controllerne
+let userController = require('./Controller/userController');
+let matchController = require('./Controller/matchController');
+let interestController = require('./Controller/interestController');
 
-//read endpoint på routen '/'
-server.get('/', userController)
+//endpoints for mine funktioner/controllers
+server.get('/', userController.userController)
+server.post('/user', userController.addNewUser)
+server.get('/match', matchController.matchController)
+server.post('match', matchController.addMatch)
+server.delete('/match/delete/:id', matchController.deleteMatch)
+server.get('/interest', interestController.interestController)
+server.post('/interest', interestController.addInterest)
+
 
 //server aktiveres
-server.listen(PORT, () => console.log('Server running on port 3000'));
+server.listen(PORT, () => console.log('Server running on port 3000 '));
